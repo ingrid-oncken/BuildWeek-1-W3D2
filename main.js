@@ -1,20 +1,20 @@
 // HEART TOGGLE FUNCTIONS
 
-window.onload = function () {
-  fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=eminem", {
-    method: "GET",
-    headers: {
-      "x-rapidapi-key": "c1fd8eb80bmsh31fad838004364fp18f820jsn1e2bc6355511",
-      "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
-    },
-  })
-    .then((response) => response.json())
-    .then((jsondata) => console.log(jsondata))
+// window.onload = function () {
+//   fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=eminem", {
+//     method: "GET",
+//     headers: {
+//       "x-rapidapi-key": "c1fd8eb80bmsh31fad838004364fp18f820jsn1e2bc6355511",
+//       "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+//     },
+//   })
+//     .then((response) => response.json())
+//     .then((jsondata) => console.log(jsondata))
 
-    .catch((err) => {
-      console.error(err);
-    });
-};
+//     .catch((err) => {
+//       console.error(err);
+//     });
+// };
 
 // let heart = document.querySelector(".favourited");
 // heart.addEventListener("click", function (e) {
