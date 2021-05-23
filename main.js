@@ -1,4 +1,4 @@
-// HEART TOGGLE FUNCTIONS
+// // HEART TOGGLE FUNCTIONS
 
 // window.onload = function () {
 //   fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=eminem", {
@@ -16,30 +16,46 @@
 //     });
 // };
 
-// let heart = document.querySelector(".favourited");
-// heart.addEventListener("click", function (e) {
-//   // heart.style.backgroundColor = 'var(--spot-green)'
-//   heart.style.color =
-//     heart.style.color === "var(--spot-green)" ? "" : "var(--spot-green)";
-//   heart.style.fontWeight = heart.style.fontWeight === "bold" ? "" : "bold";
-// });
-
-// let hearty = document.querySelector(".add-to-favourites");
-// hearty.addEventListener("click", function (e) {
-//   // heart.style.backgroundColor = 'var(--spot-green)'
-//   hearty.style.color =
-//     hearty.style.color === "var(--spot-green)" ? "" : "var(--spot-green)";
-//   hearty.style.fontWeight = hearty.style.fontWeight === "bold" ? "" : "bold";
-// });
-
-// // MOBILE SIDEBAR
-
-// /* Open when someone clicks on the span element */
-// function openNav() {
-//   document.getElementById("mobileNav").style.width = "100%";
-// }
-
-// /* Close when someone clicks on the "x" symbol inside the overlay */
-// function closeNav() {
-//   document.getElementById("mobileNav").style.width = "0%";
-// }
+const albumContainer = document.getElementById("albums")
+const card = document.querySelectorAll(".myAlbum")
+window.onload = () => {
+  fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=queen")
+    .then((response) => response.json())
+    .then((artist) => {
+      console.log(artist.data)
+      let albums = artist.data
+      albums.forEach((album) => {
+        albumContainer.innerHTML += `<div
+            class="myAlbum col-6 col-md-4 col-lg-2 px-1 py-0 artist-anim w-50 h-20"
+            id="card-col"
+          >
+            <div class="card text-white thursday">
+              <img
+                class="card-img shadow image-fluid w-100"
+                src="${album.album.cover_big}"
+                alt="Card image"
+              />
+              <div class="overlay"></div>
+              <div class="card-img">
+                <p class="card-p mt-1">${album.title}<br /><span>Queen</span></p>
+              </div>
+            </div>
+            <div class="newClass">
+              <a
+                href="#"
+                class="rent-badge badge"
+                style="background: none"
+                id="playbtn"
+                ><img src="images/play.png" style="background: none"
+              /></a>
+            </div>
+          </div>`
+      })
+    })
+    .catch((err) => console.log(err))
+  card.addEventListener("click", () => renderAlbum())
+}
+function renderAlbum(e) {
+  const currentId = e.target.albums.album.id
+  console.log(currentId)
+}
